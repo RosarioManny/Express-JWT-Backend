@@ -4,12 +4,14 @@ const userRouter = require('./controllers/users');
 const mongoose = require('mongoose');
 const express = require('express');
 const dotenv = require('dotenv');
+const cors = require('cors')
 dotenv.config();
 const app = express();
 
 mongoose.connect(process.env.MONGODB_URI);
 
 app.use(express.json());
+app.use(cors())
 
 // ^^^^^ Routes ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 app.use('/auth', testJWTRouter);
